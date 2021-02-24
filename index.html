@@ -1,0 +1,55 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/vue@3.0.2"></script>
+    <link rel="stylesheet" href=assets/styles.css>
+
+  </head>
+  <body>
+    <h1>Hello World</h1>
+    <div id="app">
+        <!-- Attribute binding -->
+
+    <a :href="url">Github</a>
+
+      <div v-if="showBooks">
+        <ul>
+            <h2>All Books</h2>
+            <li v-for="book in books" :class="{ fav: book.isFav }" @click="toggleFav(book)">
+                <img :src="book.img" :alt="book.title">
+                <h3>{{ book.title }}</h3>
+                <p>{{ book.author }} </p>
+            </li>
+        </ul>
+        <ul>
+            <h2>Favorite Books</h2>
+            <li v-for="book in filteredBooks" :class="{ fav: book.isFav }" @click="toggleFav(book)">
+                <img :src="book.img" :alt="book.title">
+                <h3>{{ book.title }}</h3>
+                <p>{{ book.author }} </p>
+            </li>
+        </ul>
+      </div>
+
+      <button @click="toggleShowBooks">
+        <span v-if="showBooks">Hide Books</span>
+        <span v-else=>Show Books</span> 
+      </button>
+      <div v-show="showBooks">Currently showing books</div>
+
+      <br>
+
+      <div class="box" @mouseover="handleEvent($event, 5)">Mouse over</div>
+      <div class="box" @mouseleave="handleEvent">Mouse leave</div>
+      <div class="box" @dblclick="handleEvent">Double Click</div>
+      <div class="box" @mousemove="handleMousemove">Position - {{ x }} - {{ y }}</div>
+
+    <br> 
+
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
